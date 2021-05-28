@@ -5,7 +5,7 @@ import getParams from '../../../utils/getParams';
 import './ProductPage.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import Card from '../../../components/UI/Card/Card';
+import { generatePublicUrl } from '../../../urlConfig';
 
 const ProductPage = (props) => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const ProductPage = (props) => {
               style={{ display: 'block' }}
               href={banner.navigateTo}
             >
-              <img src={banner.img} alt="Banner" />
+              <img src={generatePublicUrl(banner.img)} alt="Banner" />
             </a>
           ))}
       </Carousel>
@@ -42,7 +42,7 @@ const ProductPage = (props) => {
             <div className="page-card" key={index}>
               <img
                 className="page-product-img"
-                src={product.img}
+                src={generatePublicUrl(product.img)}
                 alt="Product"
               />
             </div>
