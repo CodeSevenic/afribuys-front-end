@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './MaterialUI.css';
+import { BiUser } from 'react-icons/bi';
 
 const Modal = (props) => {
   if (!props.visible) {

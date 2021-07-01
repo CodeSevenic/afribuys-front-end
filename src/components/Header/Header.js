@@ -12,6 +12,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { login, signout, signup as _signup } from '../../actions/actionsIndex';
 import Cart from '../../components/UI/Cart';
+import { BiUser } from 'react-icons/bi';
 
 const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
@@ -198,6 +199,7 @@ const Header = (props) => {
   const renderRightSideMenu = () => {
     return (
       <div className="rightMenu">
+        <BiUser />
         {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
         <DropdownMenu
           menu={
