@@ -172,6 +172,7 @@
     order: -5;
     align-items: flex-end;
     margin-left: 40px;
+    margin-right: 10px;
   }
   .searchBlock {
     padding: 12px 10px 0 10px;
