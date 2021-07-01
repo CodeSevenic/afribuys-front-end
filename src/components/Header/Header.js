@@ -244,11 +244,7 @@ const Header = (props) => {
         {/* Logo End */}
 
         {/* Search component */}
-        <div
-          style={{
-            padding: '0 10px',
-          }}
-        >
+        <div className="searchBlock">
           <div className="searchInputContainer">
             <input
               className="searchInput"
