@@ -12,6 +12,13 @@
   align-items: center;
 }
 
+.icon_user {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  fill: #fff;
+}
+
 .logo {
   width: 137px;
   height: 100%;
@@ -87,7 +94,7 @@
   color: #fff;
   display: flex;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 10px;
   cursor: pointer;
 }
 .cart {

@@ -199,7 +199,7 @@ const Header = (props) => {
   const renderRightSideMenu = () => {
     return (
       <div className="rightMenu">
-        <BiUser />
+        <BiUser className="icon_user" />
         {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
         <DropdownMenu
           menu={
