@@ -1,19 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
-import { IoIosArrowForward } from 'react-icons/io';
+import { IoIosAppstore, IoIosArrowForward, IoIosClock } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 
 import './SideMenu.css';
 
 const SideMenu = () => {
   const category = useSelector((state) => state.category);
-  const [open, setOpen] = useState(false);
 
   const renderCategories = (categories) => {
     let myCategories = [];
     for (let category of categories) {
       myCategories.push(
-        <li key={category.name} onClick={() => setOpen(!open)}>
+        <li key={category.name}>
           {category.parentId ? (
             <a
               href={`/${category.slug}?cid=${category._id}&type=${category.type}`}
@@ -64,12 +63,66 @@ const SideMenu = () => {
     );
   };
 
+  const renderTest = () => {
+    return (
+      <>
+        <div className="sidemenu">
+          <div className="menu-navigation">
+            <ul className="menu-nav-tabs">
+              <li>Menu</li>
+              <li>Account</li>
+            </ul>
+          </div>
+          <div className="menu_tab">
+            <ul className="main-sub">
+              <NavItem category="PRO" icon={<IoIosArrowForward />}>
+                <DropdownMenu />
+              </NavItem>
+            </ul>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   return (
     <div>
       <div className="back-overlay"></div>
-      {renderProductCat()}
+      {renderTest()}
     </div>
   );
 };
 
 export default SideMenu;
+
+function NavItem(props) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <li className="nav-item" onClick={() => setOpen(!open)}>
+      <span>{props.category}</span>
+      <a className="Arrow_Forward" href="#">
+        {props?.icon}
+      </a>
+      {open && props.children}
+    </li>
+  );
+}
+
+function DropdownMenu() {
+  function DropdownItem(props) {
+    return (
+      <a href="#" className="menu-item">
+        <span className="icon-button">{props.leftIcon}</span>
+        {props.children}
+        <span className="icon-right">{props.rightIcon}</span>
+      </a>
+    );
+  }
+  return (
+    <div className="dyn_dropdown">
+      <DropdownItem>My Profile</DropdownItem>
+      <DropdownItem leftIcon={<IoIosClock />} rightIcon={<IoIosAppstore />} />
+    </div>
+  );
+}
