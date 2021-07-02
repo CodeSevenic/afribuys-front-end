@@ -19,6 +19,17 @@
   width: calc(100vw - 64px);
   max-width: 360px;
   display: block;
+  overflow: auto;
+}
+
+.submenu,
+.submenu li ul {
+  margin: 0;
+  padding: 0;
+}
+
+.submenu li ul {
+  display: none;
 }
 
 .menu-nav-tabs {
@@ -35,7 +46,7 @@
   text-align: center;
   font-weight: bold;
 }
-.menu_tab ul {
+.menu_tab > ul {
   margin: 0;
   padding: 0;
 }
