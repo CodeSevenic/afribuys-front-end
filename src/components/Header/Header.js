@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import flipkartLogo from '../../images/logo/flipkart.png';
 import goldenStar from '../../images/logo/golden-star.png';
-import { IoIosArrowDown, IoIosSearch } from 'react-icons/io';
+import { IoIosArrowDown, IoIosArrowForward, IoIosSearch } from 'react-icons/io';
 import {
   Modal,
   MaterialInput,
@@ -242,12 +242,14 @@ const Header = (props) => {
             <ul>
               <li className="nav_product">
                 <span>Products</span>
+                <IoIosArrowForward className="Arrow_Forward" />
               </li>
               <li className="">
                 <span>Brands</span>
               </li>
               <li className="nav_specials">
                 <span>Special</span>
+                <IoIosArrowForward className="Arrow_Forward" />
               </li>
               <li className="">
                 <span>Promotion</span>
@@ -261,7 +263,7 @@ const Header = (props) => {
 
   return (
     <div className="header">
-      {renderMobileMenu()}
+      {/* {renderMobileMenu()} */}
       {renderLoginModal()}
       <div className="subHeader">
         {/* Logo */}

@@ -35,15 +35,19 @@ const MenuHeader = (props) => {
     return myCategories;
   };
 
-  return (
-    <div className="menuHeader">
-      <ul>
-        {category.categories.length > 0
-          ? renderCategories(category.categories)
-          : null}
-      </ul>
-    </div>
-  );
+  const renderMenuHeader = () => {
+    return (
+      <div className="menuHeader">
+        <ul>
+          {category.categories.length > 0
+            ? renderCategories(category.categories)
+            : null}
+        </ul>
+      </div>
+    );
+  };
+
+  return renderMenuHeader();
 };
 
 export default MenuHeader;
