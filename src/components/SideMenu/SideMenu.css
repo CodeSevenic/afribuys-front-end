@@ -1,0 +1,53 @@
+.back-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.sidemenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 910;
+  box-shadow: none;
+  background-color: #fff;
+  width: calc(100vw - 64px);
+  max-width: 360px;
+  display: block;
+}
+
+.menu-nav-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+.menu-nav-tabs li {
+  padding: 16px;
+  background-color: #2874f0;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+.menu_tab ul {
+  margin: 0;
+  padding: 0;
+}
+.menu_tab ul li {
+  padding: 20px;
+  position: relative;
+  margin-top: 15px;
+  box-shadow: 1px 1px 10px -5px grey;
+  box-sizing: border-box;
+}
+
+.Arrow_Forward {
+  position: absolute;
+  right: 10px;
+}
