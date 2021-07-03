@@ -1,40 +1,58 @@
 import React from 'react';
 import { useState } from 'react';
-import { IoIosAppstore, IoIosArrowForward, IoIosClock } from 'react-icons/io';
+import { IoIosArrowForward } from 'react-icons/io';
 import { useSelector } from 'react-redux';
+import { DropdownMenu } from './SideMenuComponent';
 import { CSSTransition } from 'react-transition-group';
 
 import './SideMenu.css';
 
-const SideMenu = () => {
+const SideMenu = (props) => {
   const category = useSelector((state) => state.category);
+  const [open, setOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState('main');
+  const [menuHeight, setMenuHeight] = useState(null);
+
+  function calcHeight(el) {
+    const height = el.offsetHeight;
+    console.log(height);
+    setMenuHeight(height);
+  }
 
   const renderCategories = (categories) => {
     let myCategories = [];
     for (let category of categories) {
       myCategories.push(
-        <li key={category.name}>
-          {category.parentId ? (
-            <a
-              href={`/${category.slug}?cid=${category._id}&type=${category.type}`}
+        <>
+          <CSSTransition
+            in={activeMenu === 'main'}
+            unmountOnExit
+            timeout={500}
+            classNames="menu-primary"
+            onEnter={calcHeight}
+          >
+            <li
+              onClick={() => setActiveMenu('main' ? 'sub-main' : 'main')}
+              key={category.name}
             >
-              {category.name}
-            </a>
-          ) : (
-            <span>{category.name}</span>
-          )}
-          {category.children.length > 0 && (
-            <ul className="supersubmenu">
-              {renderCategories(category.children)}
-            </ul>
-          )}
-        </li>
+              {category.parentId ? (
+                <a
+                  href={`/${category.slug}?cid=${category._id}&type=${category.type}`}
+                >
+                  {category.name}
+                </a>
+              ) : (
+                <span>{category.name}</span>
+              )}
+              {category.children.length > 0 &&
+                renderCategories(category.children)}
+            </li>
+          </CSSTransition>
+        </>
       );
     }
     return myCategories;
   };
-
-  console.log(renderCategories(category.categories));
 
   const renderProductCat = () => {
     return (
@@ -74,11 +92,19 @@ const SideMenu = () => {
               <li>Account</li>
             </ul>
           </div>
-          <div className="menu_tab">
-            <ul className="main-sub">
-              <NavItem category="PRO" icon={<IoIosArrowForward />}>
-                <DropdownMenu />
-              </NavItem>
+          <div className="menu_option">
+            {!open && (
+              <ul className="main-sub">
+                <li className="nav-item" onClick={() => setActiveMenu('main')}>
+                  <span>Products</span>
+                  <IoIosArrowForward className="Arrow_Forward" />
+                </li>
+              </ul>
+            )}
+            <ul className="submenu">
+              {category.categories.length > 0
+                ? renderCategories(category.categories)
+                : null}
             </ul>
           </div>
         </div>
@@ -95,57 +121,3 @@ const SideMenu = () => {
 };
 
 export default SideMenu;
-
-function NavItem(props) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <li className="nav-item" onClick={() => setOpen(!open)}>
-      <span>{props.category}</span>
-      <a className="Arrow_Forward" href="#">
-        {props?.icon}
-      </a>
-      {open && props.children}
-    </li>
-  );
-}
-
-function DropdownMenu() {
-  const [activeMenu, setActiveMenu] = useState('main');
-  function DropdownItem(props) {
-    return (
-      <a href="#" className="menu-item">
-        <span className="icon-button">{props.leftIcon}</span>
-        {props.children}
-        <span className="icon-right">{props.rightIcon}</span>
-      </a>
-    );
-  }
-  return (
-    <div className="dyn_dropdown">
-      <CSSTransition
-        in={activeMenu === 'main'}
-        unmountOnExit
-        timeout={500}
-        classNames="menu-primary"
-      >
-        <div className="menu">
-          <DropdownItem leftIcon={<IoIosClock />}>My Profile</DropdownItem>
-          <DropdownItem leftIcon={<IoIosAppstore />}>Settings</DropdownItem>
-        </div>
-      </CSSTransition>
-
-      <CSSTransition
-        in={activeMenu === 'settings'}
-        unmountOnExit
-        timeout={500}
-        classNames="menu-secondary"
-      >
-        <div className="menu">
-          <DropdownItem leftIcon={<IoIosClock />}>Settings</DropdownItem>
-          <DropdownItem leftIcon={<IoIosAppstore />}>Settings</DropdownItem>
-        </div>
-      </CSSTransition>
-    </div>
-  );
-}
