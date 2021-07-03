@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { IoIosAppstore, IoIosArrowForward, IoIosClock } from 'react-icons/io';
 import { useSelector } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 
 import './SideMenu.css';
 
@@ -110,6 +111,7 @@ function NavItem(props) {
 }
 
 function DropdownMenu() {
+  const [activeMenu, setActiveMenu] = useState('main');
   function DropdownItem(props) {
     return (
       <a href="#" className="menu-item">
@@ -121,8 +123,17 @@ function DropdownMenu() {
   }
   return (
     <div className="dyn_dropdown">
-      <DropdownItem>My Profile</DropdownItem>
-      <DropdownItem leftIcon={<IoIosClock />} rightIcon={<IoIosAppstore />} />
+      <CSSTransition
+        in={activeMenu === 'main'}
+        unmountOnExit
+        timeout={500}
+        classNames="menu-primary"
+      >
+        <div className="menu">
+          <DropdownItem leftIcon={<IoIosClock />}>My Profile</DropdownItem>
+          <DropdownItem leftIcon={<IoIosAppstore />}>Settings</DropdownItem>
+        </div>
+      </CSSTransition>
     </div>
   );
 }
