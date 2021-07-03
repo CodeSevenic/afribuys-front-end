@@ -134,6 +134,18 @@ function DropdownMenu() {
           <DropdownItem leftIcon={<IoIosAppstore />}>Settings</DropdownItem>
         </div>
       </CSSTransition>
+
+      <CSSTransition
+        in={activeMenu === 'settings'}
+        unmountOnExit
+        timeout={500}
+        classNames="menu-secondary"
+      >
+        <div className="menu">
+          <DropdownItem leftIcon={<IoIosClock />}>Settings</DropdownItem>
+          <DropdownItem leftIcon={<IoIosAppstore />}>Settings</DropdownItem>
+        </div>
+      </CSSTransition>
     </div>
   );
 }
