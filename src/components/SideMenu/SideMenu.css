@@ -37,6 +37,7 @@
   justify-content: space-around;
   margin: 0;
   padding: 0;
+  box-shadow: 1px 1px 5px 1px grey;
 }
 .menu-nav-tabs li {
   padding: 16px;
@@ -45,6 +46,7 @@
   width: 100%;
   text-align: center;
   font-weight: bold;
+  box-shadow: inset 1px 1px 4px -1px black;
 }
 .menu_option {
   position: relative;
@@ -54,12 +56,17 @@
   padding: 0;
 }
 .menu_option ul li {
-  padding: 20px;
+  padding: 15px;
   position: relative;
   margin-top: 15px;
   box-shadow: 1px 1px 10px -5px grey;
   box-sizing: border-box;
   animation: fadeIn 0.3s;
+}
+
+.sub-menu > li {
+  font-size: 12px;
+  padding: 10px;
 }
 
 .Arrow_Forward {

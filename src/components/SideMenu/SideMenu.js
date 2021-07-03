@@ -24,62 +24,29 @@ const SideMenu = (props) => {
     for (let category of categories) {
       myCategories.push(
         <>
-          <CSSTransition
-            in={activeMenu === 'main'}
-            unmountOnExit
-            timeout={500}
-            classNames="menu-primary"
-            onEnter={calcHeight}
-          >
-            <li
-              onClick={() => setActiveMenu('main' ? 'sub-main' : 'main')}
-              key={category.name}
-            >
-              {category.parentId ? (
-                <a
-                  href={`/${category.slug}?cid=${category._id}&type=${category.type}`}
-                >
-                  {category.name}
-                </a>
-              ) : (
+          <li className="sub-menu" key={category.name}>
+            {category.parentId ? (
+              <a
+                className="super-sub"
+                href={`/${category.slug}?cid=${category._id}&type=${category.type}`}
+              >
+                {category.name}
+              </a>
+            ) : (
+              <div onClick={() => setOpen(!open)}>
                 <span>{category.name}</span>
-              )}
-              {category.children.length > 0 &&
-                renderCategories(category.children)}
-            </li>
-          </CSSTransition>
+                <IoIosArrowForward className="Arrow_Forward" />
+              </div>
+            )}
+
+            {open &&
+              category.children.length > 0 &&
+              renderCategories(category.children)}
+          </li>
         </>
       );
     }
     return myCategories;
-  };
-
-  const renderProductCat = () => {
-    return (
-      <>
-        <div className="sidemenu">
-          <div className="menu-navigation">
-            <ul className="menu-nav-tabs">
-              <li>Menu</li>
-              <li>Account</li>
-            </ul>
-          </div>
-          <div className="menu_tab">
-            <ul className="main-sub">
-              <li className="nav_product">
-                <span>Products</span>
-                <IoIosArrowForward className="Arrow_Forward" />
-                <ul className="submenu">
-                  {category.categories.length > 0
-                    ? renderCategories(category.categories)
-                    : null}
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </>
-    );
   };
 
   const renderTest = () => {
@@ -93,14 +60,6 @@ const SideMenu = (props) => {
             </ul>
           </div>
           <div className="menu_option">
-            {!open && (
-              <ul className="main-sub">
-                <li className="nav-item" onClick={() => setActiveMenu('main')}>
-                  <span>Products</span>
-                  <IoIosArrowForward className="Arrow_Forward" />
-                </li>
-              </ul>
-            )}
             <ul className="submenu">
               {category.categories.length > 0
                 ? renderCategories(category.categories)

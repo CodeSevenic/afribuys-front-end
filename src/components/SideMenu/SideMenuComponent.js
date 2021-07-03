@@ -29,7 +29,7 @@ export function DropdownMenu(props) {
   }
 
   return (
-    <div className="dyn_dropdown">
+    <div className="dyn_dropdown" style={{ height: menuHeight }}>
       <CSSTransition
         in={activeMenu === 'main'}
         unmountOnExit
