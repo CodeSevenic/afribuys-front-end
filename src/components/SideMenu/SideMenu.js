@@ -1,21 +1,34 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiConstants } from '../../reducers/UI';
 import Dropdown from './Dropdown';
 
 import './SideMenu.css';
 
 const SideMenu = (props) => {
-  const [sideMenu, setSideMenu] = useState(false);
+  // const [closeSideMenu, setCloseSideMenu] = useState(false);
+  const dispatch = useDispatch();
+  const closeSideMenu = useSelector((state) => state.ui.closeSideMenu);
+  console.log(closeSideMenu);
   const renderTest = () => {
     return (
       <>
-        <div className="back-overlay"></div>
+        <div
+          onClick={() => dispatch({ type: uiConstants.SIDE_MENU_CLOSE })}
+          className={closeSideMenu ? 'back-overlay' : 'back-overlay active'}
+        ></div>
         <div className="side-menu-container">
-          <div className="sidemenu">
+          <div className={closeSideMenu ? `sidemenu` : 'sidemenu active'}>
             <div className="menu-navigation">
               <ul className="menu-nav-tabs">
                 <li>Menu</li>
                 <li>Account</li>
-                <div className="close_cont">
+                <div
+                  className="close_cont"
+                  onClick={() =>
+                    dispatch({ type: uiConstants.SIDE_MENU_CLOSE })
+                  }
+                >
                   <img className="close_icon" src="images/close.png" alt="" />
                 </div>
               </ul>

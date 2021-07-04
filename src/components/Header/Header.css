@@ -141,6 +141,11 @@
   box-sizing: border-box;
 }
 
+.dash_options {
+  display: flex;
+  align-items: center;
+}
+
 .rightspace {
   display: flex;
   flex: 1;
@@ -148,7 +153,28 @@
   align-items: center;
 }
 
+.rightMenu .navicon {
+  display: none;
+  width: 32px;
+  order: 3;
+  margin-right: 10px;
+  filter: invert(1);
+}
+
+@media (max-width: 575px) {
+  .dash_options {
+    display: none;
+  }
+
+  .headerDropdownContainer {
+    display: none !important;
+  }
+}
+
 @media (max-width: 680px) {
+  .rightMenu .navicon {
+    display: unset;
+  }
   .header {
     width: 100%;
     height: fit-content;

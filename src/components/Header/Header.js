@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, signout, signup as _signup } from '../../actions/actionsIndex';
 import Cart from '../../components/UI/Cart';
 import { BiUser } from 'react-icons/bi';
+import { uiConstants } from '../../reducers/UI';
 
 const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
@@ -200,8 +201,16 @@ const Header = (props) => {
   const renderRightSideMenu = () => {
     return (
       <div className="rightMenu">
-        {auth.authenticate && <BiUser className="icon_user" />}
-        {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
+        <div className="dash_options">
+          {auth.authenticate && <BiUser className="icon_user" />}
+          {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
+        </div>
+        <img
+          onClick={() => dispatch({ type: uiConstants.SIDE_MENU_OPEN })}
+          className="navicon"
+          src="images/navicon-round.png"
+          alt=""
+        />
         <DropdownMenu
           menu={
             <a className="more">
