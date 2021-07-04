@@ -4,8 +4,10 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 import { DropdownMenu } from './SideMenuComponent';
 import { CSSTransition } from 'react-transition-group';
+import Dropdown from './Dropdown';
 
 import './SideMenu.css';
+import { useEffect } from 'react';
 
 const SideMenu = (props) => {
   const category = useSelector((state) => state.category);
@@ -23,8 +25,8 @@ const SideMenu = (props) => {
     let myCategories = [];
     for (let category of categories) {
       myCategories.push(
-        <>
-          <li className="sub-menu" key={category.name}>
+        <ul className="submenu">
+          <li key={category.name}>
             {category.parentId ? (
               <a
                 className="super-sub"
@@ -33,17 +35,18 @@ const SideMenu = (props) => {
                 {category.name}
               </a>
             ) : (
-              <div onClick={() => setOpen(!open)}>
-                <span>{category.name}</span>
-                <IoIosArrowForward className="Arrow_Forward" />
+              <div id="main-cat">
+                <input type="checkbox" name="" id="A" />
+                <label htmlFor="A">
+                  {category.name}{' '}
+                  <IoIosArrowForward className="Arrow_Forward" />
+                </label>
               </div>
             )}
-
-            {open &&
-              category.children.length > 0 &&
+            {category.children.length > 0 &&
               renderCategories(category.children)}
           </li>
-        </>
+        </ul>
       );
     }
     return myCategories;
@@ -60,11 +63,7 @@ const SideMenu = (props) => {
             </ul>
           </div>
           <div className="menu_option">
-            <ul className="submenu">
-              {category.categories.length > 0
-                ? renderCategories(category.categories)
-                : null}
-            </ul>
+            <Dropdown />
           </div>
         </div>
       </>

@@ -1,0 +1,73 @@
+.multi-level,
+.item ul,
+.item input[type='checkbox'] {
+  display: none;
+}
+
+.multi-level,
+.item input:checked ~ ul {
+  display: block;
+}
+
+.main-select {
+  padding: 5px;
+  margin: 0 10px 10px 10px;
+  background-color: #2874f0;
+  border-radius: 50px;
+  box-shadow: 1px 1px 10px 1px gray;
+  display: block;
+}
+
+.main-select label {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.main-select:nth-child(2) {
+  /* margin-top: 20px 0; */
+}
+
+.item a {
+  color: #1e4a91;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0;
+}
+
+.arrow {
+  width: 16px;
+  height: 26px;
+  margin: 0px 0px 2px 5px;
+  vertical-align: middle;
+  filter: invert(1);
+}
+
+.item input + .main-select .arrow {
+  transform: rotate(-90deg);
+  transition: 0.2s;
+}
+
+.item input:checked + .main-select .arrow {
+  transform: rotate(0deg);
+  transition: 0.2s;
+}
+
+.item label {
+  cursor: pointer;
+}
+
+.item ul .item li,
+.item ul,
+.menu_option > .item > ul > li {
+  padding: 0;
+  margin: 0;
+}
+
+.menu_option > .item > ul > li {
+  margin: 0 0 0 30px;
+}
+
+.menu_option > .item > ul > li > .item > ul > li {
+  margin: -3px 5px 5px 35px;
+}
