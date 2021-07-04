@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiConstants } from '../../reducers/UI';
 import Dropdown from './Dropdown';
+import { NavLink } from 'react-router-dom';
 
 import './SideMenu.css';
 
@@ -21,8 +22,12 @@ const SideMenu = (props) => {
           <div className={closeSideMenu ? `sidemenu` : 'sidemenu active'}>
             <div className="menu-navigation">
               <ul className="menu-nav-tabs">
-                <li>Menu</li>
-                <li>Account</li>
+                <li>
+                  <>Menu</>
+                </li>
+                <li>
+                  <>Account</>
+                </li>
                 <div
                   className="close_cont"
                   onClick={() =>

@@ -205,12 +205,12 @@ const Header = (props) => {
           {auth.authenticate && <BiUser className="icon_user" />}
           {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
         </div>
-        <img
+        <div
           onClick={() => dispatch({ type: uiConstants.SIDE_MENU_OPEN })}
-          className="navicon"
-          src="images/navicon-round.png"
-          alt=""
-        />
+          className="navicon_cont"
+        >
+          <img className="navicon" src="images/navicon-round.png" alt="" />
+        </div>
         <DropdownMenu
           menu={
             <a className="more">

@@ -156,14 +156,21 @@
 .rightMenu .navicon {
   display: none;
   width: 32px;
-  order: 3;
   margin-right: 10px;
   filter: invert(1);
+}
+
+.navicon_cont {
+  order: 3;
 }
 
 @media (max-width: 575px) {
   .dash_options {
     display: none;
+  }
+
+  .rightMenu .navicon {
+    display: unset;
   }
 
   .headerDropdownContainer {
@@ -172,9 +179,6 @@
 }
 
 @media (max-width: 680px) {
-  .rightMenu .navicon {
-    display: unset;
-  }
   .header {
     width: 100%;
     height: fit-content;

@@ -7,6 +7,7 @@
   right: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 2;
+  animation: fadeIn 0.3s;
 }
 .back-overlay.active {
   display: unset;
@@ -33,13 +34,13 @@
   width: calc(100vw - 64px);
   max-width: 360px;
   display: block;
-  transform: translateX(-150%);
+  transform: translateX(-200%);
   transition: all 0.4s ease-in-out;
 }
 
 .sidemenu.active {
   transform: translateX(0%);
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .submenu,
@@ -72,8 +73,15 @@
   width: 25px;
   box-shadow: inset 0px -1px 5px -5px black;
   height: 25px;
+  cursor: pointer;
   filter: invert(1);
 }
+
+.menu-nav-tabs .close_cont img:hover {
+  transform: rotate(90deg);
+  transition: all 0.5s ease;
+}
+
 .menu-nav-tabs .close_cont {
   align-self: center;
   padding: 11px 1px;
