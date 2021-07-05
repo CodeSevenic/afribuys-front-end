@@ -4,7 +4,7 @@ export const uiConstants = {
 };
 
 const initialState = {
-  closeSideMenu: false,
+  closeSideMenu: true,
 };
 
 const uiState = (state = initialState, action) => {

@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiConstants } from '../../reducers/UI';
 import Dropdown from './Dropdown';
+import { IoIosArrowDown, IoIosSearch } from 'react-icons/io';
 import { NavLink } from 'react-router-dom';
 
 import './SideMenu.css';
 
 const SideMenu = (props) => {
-  // const [closeSideMenu, setCloseSideMenu] = useState(false);
   const dispatch = useDispatch();
   const closeSideMenu = useSelector((state) => state.ui.closeSideMenu);
+
   console.log(closeSideMenu);
   const renderTest = () => {
     return (
@@ -23,10 +24,10 @@ const SideMenu = (props) => {
             <div className="menu-navigation">
               <ul className="menu-nav-tabs">
                 <li>
-                  <>Menu</>
+                  <a>Menu</a>
                 </li>
                 <li>
-                  <>Account</>
+                  <a>Account</a>
                 </li>
                 <div
                   className="close_cont"
@@ -38,9 +39,7 @@ const SideMenu = (props) => {
                 </div>
               </ul>
             </div>
-            <div className="menu_option">
-              <Dropdown />
-            </div>
+            <div className="menu_option">{/* <Dropdown /> */}</div>
           </div>
         </div>
       </>
