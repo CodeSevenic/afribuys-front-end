@@ -236,47 +236,51 @@ const Header = (props) => {
     );
   };
 
-  return (
-    <div className="header">
-      {renderLoginModal()}
-      <div className="subHeader">
-        {/* Logo */}
-        <div className="logo">
-          <a href="">
-            <img src={flipkartLogo} className="logoimage" alt="" />
-          </a>
-          <a style={{ marginTop: '-10px' }}>
-            <span className="exploreText">Explore</span>
-            <span className="plusText">Plus</span>
-            <img src={goldenStar} className="goldenStar" alt="" />
-          </a>
-        </div>
-        {/* Logo End */}
+  const renderHeader = () => {
+    return (
+      <div className="header">
+        {renderLoginModal()}
+        <div className="subHeader">
+          {/* Logo */}
+          <div className="logo">
+            <a href="">
+              <img src={flipkartLogo} className="logoimage" alt="" />
+            </a>
+            <a style={{ marginTop: '-10px' }}>
+              <span className="exploreText">Explore</span>
+              <span className="plusText">Plus</span>
+              <img src={goldenStar} className="goldenStar" alt="" />
+            </a>
+          </div>
+          {/* Logo End */}
 
-        {/* Search component */}
-        <div className="searchBlock">
-          <div className="searchInputContainer">
-            <input
-              className="searchInput"
-              placeholder={'search for products, brands and more'}
-            />
-            <div className="searchIconContainer">
-              <IoIosSearch
-                style={{
-                  color: '#2874f0',
-                }}
+          {/* Search component */}
+          <div className="searchBlock">
+            <div className="searchInputContainer">
+              <input
+                className="searchInput"
+                placeholder={'search for products, brands and more'}
               />
+              <div className="searchIconContainer">
+                <IoIosSearch
+                  style={{
+                    color: '#2874f0',
+                  }}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        {/* Search Component End */}
+          {/* Search Component End */}
 
-        {/* Right side menu */}
-        {renderRightSideMenu()}
-        {/* Right side menu end */}
+          {/* Right side menu */}
+          {renderRightSideMenu()}
+          {/* Right side menu end */}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
+
+  return renderHeader();
 };
 
 export default Header;
