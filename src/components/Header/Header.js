@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import './SideMenu.css';
 import flipkartLogo from '../../images/logo/flipkart.png';
 import goldenStar from '../../images/logo/golden-star.png';
 import { IoIosArrowDown, IoIosSearch } from 'react-icons/io';
@@ -15,6 +16,7 @@ import { login, signout, signup as _signup } from '../../actions/actionsIndex';
 import Cart from '../../components/UI/Cart';
 import { BiUser } from 'react-icons/bi';
 import { uiConstants } from '../../reducers/UI';
+import Dropdown from './Dropdown';
 
 const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
@@ -26,6 +28,8 @@ const Header = (props) => {
   const auth = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  const closeSideMenu = useSelector((state) => state.ui.closeSideMenu);
 
   const userSignup = () => {
     console.log({ name, surname, email, password });
@@ -236,9 +240,46 @@ const Header = (props) => {
     );
   };
 
+  const renderSideMenu = () => {
+    return (
+      <>
+        <div
+          onClick={() => dispatch({ type: uiConstants.SIDE_MENU_CLOSE })}
+          className={closeSideMenu ? 'back-overlay' : 'back-overlay active'}
+        ></div>
+        <div className="side-menu-container">
+          <div className={closeSideMenu ? `sidemenu` : 'sidemenu active'}>
+            <div className="menu-navigation">
+              <ul className="menu-nav-tabs">
+                <li>
+                  <a>Menu</a>
+                </li>
+                <li>
+                  <a>Account</a>
+                </li>
+                <div
+                  className="close_cont"
+                  onClick={() =>
+                    dispatch({ type: uiConstants.SIDE_MENU_CLOSE })
+                  }
+                >
+                  <img className="close_icon" src="images/close.png" alt="" />
+                </div>
+              </ul>
+            </div>
+            <div className="menu_option">
+              <Dropdown />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   const renderHeader = () => {
     return (
       <div className="header">
+        {renderSideMenu()}
         {renderLoginModal()}
         <div className="subHeader">
           {/* Logo */}
