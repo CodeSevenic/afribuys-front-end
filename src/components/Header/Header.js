@@ -16,7 +16,7 @@ import { login, signout, signup as _signup } from '../../actions/actionsIndex';
 import Cart from '../../components/UI/Cart';
 import { BiUser } from 'react-icons/bi';
 import { uiConstants } from '../../reducers/UI';
-import Dropdown from './Dropdown';
+import SideMenuDropdown from './SideMenuDropdown';
 
 const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
@@ -268,7 +268,7 @@ const Header = (props) => {
               </ul>
             </div>
             <div className="menu_option">
-              <Dropdown />
+              <SideMenuDropdown />
             </div>
           </div>
         </div>

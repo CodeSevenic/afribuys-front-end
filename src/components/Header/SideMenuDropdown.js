@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 
-import './Dropdown.css';
+import './SideMenuDropdown.css';
 
 const Dropdown = () => {
   const category = useSelector((state) => state.category);
