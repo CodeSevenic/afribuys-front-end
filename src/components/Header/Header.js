@@ -10,6 +10,7 @@ import {
   MaterialInput,
   MaterialButton,
   DropdownMenu,
+  SideMenuTab,
 } from '../MaterialUI/MaterialUI';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, signout, signup as _signup } from '../../actions/actionsIndex';
@@ -240,6 +241,124 @@ const Header = (props) => {
     );
   };
 
+  function renderSideAccOptions() {
+    return (
+      <div>
+        {auth.authenticate && (
+          <div className="sideLoginInput">
+            {!signup && (
+              <MaterialInput
+                type="text"
+                label="Enter First Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            )}
+            {!signup && (
+              <MaterialInput
+                type="text"
+                label="Enter Last Name"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
+              />
+            )}
+            <MaterialInput
+              type="email"
+              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <MaterialInput
+              type="password"
+              label="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              // rightElement={<a href="#">Forgot?</a>}
+            />
+            <MaterialButton
+              title={!signup ? 'Register' : 'Login'}
+              bgColor="#fb641b"
+              textColor="#ffffff"
+              style={{
+                margin: '40px 0 20px 0',
+              }}
+              onClick={userLogin}
+            />
+
+            <p style={{ textAlign: 'center' }}>OR</p>
+
+            <MaterialButton
+              title="Request OTP"
+              bgColor="#ffffff"
+              textColor="#2874f0"
+              style={{
+                margin: '40px 0',
+              }}
+            />
+          </div>
+        )}
+
+        {!auth.authenticate && (
+          <SideMenuTab
+            menus={[
+              { label: 'My Profile', href: '', icon: null },
+              { label: 'SuperCoin Zone', href: '', icon: null },
+              { label: 'Flipkart Plus Zone', href: '', icon: null },
+              { label: 'Orders', href: '/account/orders', icon: null },
+              { label: 'Wishlist', href: '', icon: null },
+              { label: 'My Chats', href: '', icon: null },
+              { label: 'Coupons', href: '', icon: null },
+              { label: 'Rewards', href: '', icon: null },
+              { label: 'Notifications', href: '', icon: null },
+              { label: 'Gift Cards', href: '', icon: null },
+              { label: 'Logout', href: '', icon: null, onClick: logout },
+            ]}
+          >
+            <div className="side_user">
+              {auth.authenticate && (
+                <BiUser style={{ fill: 'blue' }} className="icon_user" />
+              )}
+
+              <a>{auth.user.fullName}</a>
+            </div>
+          </SideMenuTab>
+        )}
+
+        {!auth.authenticate && (
+          <SideMenuTab
+            menus_ex={[
+              { label: 'Notification Preference', href: '', icon: null },
+              { label: 'Sell on flipkart', href: '', icon: null },
+              { label: '24x7 Customer Care', href: '', icon: null },
+              { label: 'Advertise', href: '', icon: null },
+              { label: 'Download App', href: '', icon: null },
+            ]}
+          />
+        )}
+
+        {!auth.authenticate && (
+          <SideMenuTab
+            bottomText={
+              <div className="firstmenu">
+                <span>New Customer?</span>
+                <a
+                  onClick={() => {
+                    setLoginModal(true);
+                    setSignup(true);
+                  }}
+                  style={{ color: '#2874f0' }}
+                >
+                  Sign Up
+                </a>
+              </div>
+            }
+          />
+        )}
+      </div>
+    );
+  }
+
   const renderSideMenu = () => {
     return (
       <>
@@ -263,12 +382,13 @@ const Header = (props) => {
                     dispatch({ type: uiConstants.SIDE_MENU_CLOSE })
                   }
                 >
-                  <img className="close_icon" src="images/close.png" alt="" />
+                  {/* <img className="close_icon" src="images/close.png" alt="" /> */}
                 </div>
               </ul>
             </div>
             <div className="menu_option">
-              <SideMenuDropdown />
+              {/* <SideMenuDropdown /> */}
+              {renderSideAccOptions()}
             </div>
           </div>
         </div>

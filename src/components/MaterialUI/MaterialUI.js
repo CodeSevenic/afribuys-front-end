@@ -33,7 +33,7 @@ const MaterialInput = (props) => {
           lineHeight: 'none',
         }}
       >
-        {props.label && `Enter ${props.label}`}
+        {props.label && `${props.label}`}
       </label>
       <div
         style={{
@@ -129,6 +129,58 @@ const DropdownMenu = (props) => {
   );
 };
 
+const SideMenuTab = (props) => {
+  return (
+    <div className="menu_tab_container">
+      {props.menu}
+      <div className="menu_children">{props.children}</div>
+      {props.menus && (
+        <div className="menu_tab_content">
+          {
+            <ul className="menu_tab_list">
+              {props.menus.map((item, index) => (
+                <li key={index}>
+                  <a
+                    onClick={(e) => {
+                      if (item.onClick) {
+                        e.preventDefault();
+                        item.onClick && item.onClick();
+                      }
+                    }}
+                    href={`${item.href}`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          }
+        </div>
+      )}
+      {props.menus_ex && (
+        <ul className="menu_tab_list_extra">
+          {props.menus_ex.map((item, index) => (
+            <li key={index}>
+              <a
+                onClick={(e) => {
+                  if (item.onClick) {
+                    e.preventDefault();
+                    item.onClick && item.onClick();
+                  }
+                }}
+                href={`${item.href}`}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+      {props.bottomText}
+    </div>
+  );
+};
+
 const Anchor = (props) => {
   return (
     <button {...props} className="anchorButton">
@@ -153,4 +205,12 @@ const Breed = (props) => {
   );
 };
 
-export { Modal, MaterialInput, MaterialButton, DropdownMenu, Anchor, Breed };
+export {
+  Modal,
+  MaterialInput,
+  MaterialButton,
+  DropdownMenu,
+  Anchor,
+  Breed,
+  SideMenuTab,
+};

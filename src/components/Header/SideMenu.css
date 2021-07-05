@@ -34,6 +34,7 @@
   width: calc(100vw - 64px);
   max-width: 360px;
   display: block;
+  overflow-y: scroll;
   transform: translateX(-200%);
   transition: all 0.4s ease-in-out;
 }
@@ -66,7 +67,6 @@
   width: 100%;
   text-align: center;
   font-weight: bold;
-  /* border-radius: 10px; */
   box-shadow: inset 1px -1px 4px -2px black;
 }
 .menu-nav-tabs .close_cont img {
@@ -82,12 +82,12 @@
   transition: all 0.5s ease;
 }
 
-.menu-nav-tabs .close_cont {
+/* .menu-nav-tabs .close_cont {
   align-self: center;
   padding: 11px 1px;
   margin-right: -27px;
   border-radius: 10px;
-}
+} */
 
 .menu_option {
   position: relative;
