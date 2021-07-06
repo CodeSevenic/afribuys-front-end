@@ -70,6 +70,10 @@
   box-shadow: inset 1px -1px 4px -2px black;
   cursor: pointer;
 }
+
+.menu-nav-tabs .active {
+  background-color: #235fbf;
+}
 .menu-nav-tabs .close_cont img {
   width: 25px;
   box-shadow: inset 0px -1px 5px -5px black;

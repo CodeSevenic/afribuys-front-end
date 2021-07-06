@@ -375,10 +375,16 @@ const Header = (props) => {
           <div className={closeSideMenu ? `sidemenu` : 'sidemenu active'}>
             <div className="menu-navigation">
               <ul className="menu-nav-tabs">
-                <li onClick={() => setToggleSideNav(true)}>
+                <li
+                  className={toggleSideNav && `active`}
+                  onClick={() => setToggleSideNav(true)}
+                >
                   <span>Menu</span>
                 </li>
-                <li onClick={() => setToggleSideNav(false)}>
+                <li
+                  className={!toggleSideNav && `active`}
+                  onClick={() => setToggleSideNav(false)}
+                >
                   <span>Account</span>
                 </li>
                 <div
