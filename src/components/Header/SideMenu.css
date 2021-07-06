@@ -76,7 +76,7 @@
 }
 .menu-nav-tabs .close_cont img {
   width: 25px;
-  box-shadow: inset 0px -1px 5px -5px black;
+  /* box-shadow: inset 0px -1px 5px -5px black; */
   height: 25px;
   cursor: pointer;
   filter: invert(1);
