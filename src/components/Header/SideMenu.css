@@ -71,7 +71,7 @@
   cursor: pointer;
 }
 
-.menu-nav-tabs .active {
+/* .menu-nav-tabs .active { */
   background-color: #235fbf;
 }
 .menu-nav-tabs .close_cont img {
