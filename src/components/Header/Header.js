@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import './SideMenu.css';
 import flipkartLogo from '../../images/logo/flipkart.png';
@@ -22,6 +22,7 @@ import SideMenuDropdown from './SideMenuDropdown';
 const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
   const [signup, setSignup] = useState(false);
+  const [sideSignup, setSideSignup] = useState(false);
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -29,6 +30,7 @@ const Header = (props) => {
   const auth = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const [toggleSideNav, setToggleSideNav] = useState(null);
 
   const closeSideMenu = useSelector((state) => state.ui.closeSideMenu);
 
@@ -185,16 +187,18 @@ const Header = (props) => {
                   onClick={userLogin}
                 />
 
-                <p style={{ textAlign: 'center' }}>OR</p>
+                {!signup && <p style={{ textAlign: 'center' }}>OR</p>}
 
-                <MaterialButton
-                  title="Request OTP"
-                  bgColor="#ffffff"
-                  textColor="#2874f0"
-                  style={{
-                    margin: '40px 0',
-                  }}
-                />
+                {!signup && (
+                  <MaterialButton
+                    title="Request OTP"
+                    bgColor="#ffffff"
+                    textColor="#2874f0"
+                    style={{
+                      margin: '40px 0',
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -244,9 +248,9 @@ const Header = (props) => {
   function renderSideAccOptions() {
     return (
       <div>
-        {auth.authenticate && (
+        {!auth.authenticate && (
           <div className="sideLoginInput">
-            {!signup && (
+            {sideSignup && (
               <MaterialInput
                 type="text"
                 label="Enter First Name"
@@ -254,7 +258,7 @@ const Header = (props) => {
                 onChange={(e) => setName(e.target.value)}
               />
             )}
-            {!signup && (
+            {sideSignup && (
               <MaterialInput
                 type="text"
                 label="Enter Last Name"
@@ -277,7 +281,7 @@ const Header = (props) => {
               // rightElement={<a href="#">Forgot?</a>}
             />
             <MaterialButton
-              title={!signup ? 'Register' : 'Login'}
+              title={sideSignup ? 'Register' : 'Login'}
               bgColor="#fb641b"
               textColor="#ffffff"
               style={{
@@ -286,20 +290,22 @@ const Header = (props) => {
               onClick={userLogin}
             />
 
-            <p style={{ textAlign: 'center' }}>OR</p>
+            {!sideSignup && <p style={{ textAlign: 'center' }}>OR</p>}
 
-            <MaterialButton
-              title="Request OTP"
-              bgColor="#ffffff"
-              textColor="#2874f0"
-              style={{
-                margin: '40px 0',
-              }}
-            />
+            {!sideSignup && (
+              <MaterialButton
+                title="Request OTP"
+                bgColor="#ffffff"
+                textColor="#2874f0"
+                style={{
+                  margin: '40px 0',
+                }}
+              />
+            )}
           </div>
         )}
 
-        {!auth.authenticate && (
+        {auth.authenticate && (
           <SideMenuTab
             menus={[
               { label: 'My Profile', href: '', icon: null },
@@ -325,7 +331,7 @@ const Header = (props) => {
           </SideMenuTab>
         )}
 
-        {!auth.authenticate && (
+        {auth.authenticate && (
           <SideMenuTab
             menus_ex={[
               { label: 'Notification Preference', href: '', icon: null },
@@ -341,15 +347,14 @@ const Header = (props) => {
           <SideMenuTab
             bottomText={
               <div className="firstmenu">
-                <span>New Customer?</span>
+                <span>
+                  {sideSignup ? 'Already have account?' : 'New Customer?'}
+                </span>
                 <a
-                  onClick={() => {
-                    setLoginModal(true);
-                    setSignup(true);
-                  }}
+                  onClick={() => setSideSignup(!sideSignup)}
                   style={{ color: '#2874f0' }}
                 >
-                  Sign Up
+                  {sideSignup ? 'Sign In' : 'Sign Up'}
                 </a>
               </div>
             }
@@ -370,11 +375,11 @@ const Header = (props) => {
           <div className={closeSideMenu ? `sidemenu` : 'sidemenu active'}>
             <div className="menu-navigation">
               <ul className="menu-nav-tabs">
-                <li>
-                  <a>Menu</a>
+                <li onClick={() => setToggleSideNav(true)}>
+                  <span>Menu</span>
                 </li>
-                <li>
-                  <a>Account</a>
+                <li onClick={() => setToggleSideNav(false)}>
+                  <span>Account</span>
                 </li>
                 <div
                   className="close_cont"
@@ -387,8 +392,7 @@ const Header = (props) => {
               </ul>
             </div>
             <div className="menu_option">
-              {/* <SideMenuDropdown /> */}
-              {renderSideAccOptions()}
+              {toggleSideNav ? <SideMenuDropdown /> : renderSideAccOptions()}
             </div>
           </div>
         </div>

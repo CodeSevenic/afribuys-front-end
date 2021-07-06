@@ -68,6 +68,7 @@
   text-align: center;
   font-weight: bold;
   box-shadow: inset 1px -1px 4px -2px black;
+  cursor: pointer;
 }
 .menu-nav-tabs .close_cont img {
   width: 25px;
