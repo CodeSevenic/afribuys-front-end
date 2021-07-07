@@ -12,6 +12,13 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 696px) {
+  .modalFixedBg {
+    display: none !important;
+  }
+}
+
 .modalContainer {
   min-width: 400px;
   max-width: 90%;

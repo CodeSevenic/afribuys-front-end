@@ -170,7 +170,9 @@
   .dash_options {
     display: none;
   }
+}
 
+@media (max-width: 696px) {
   .rightMenu .navicon {
     display: unset;
   }
@@ -178,9 +180,6 @@
   .headerDropdownContainer {
     display: none !important;
   }
-}
-
-@media (max-width: 680px) {
   .header {
     width: 100%;
     height: fit-content;
