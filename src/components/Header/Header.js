@@ -218,7 +218,7 @@ const Header = (props) => {
           onClick={() => dispatch({ type: uiConstants.SIDE_MENU_OPEN })}
           className="navicon_cont"
         >
-          <img className="navicon" src="images/navicon-round.png" alt="" />
+          <img className="navicon" src="/images/navicon-round.png" alt="" />
         </div>
         <DropdownMenu
           menu={

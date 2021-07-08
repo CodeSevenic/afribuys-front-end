@@ -63,7 +63,7 @@
   color: #707070;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 696px) {
   .menuHeader {
     display: none;
   }

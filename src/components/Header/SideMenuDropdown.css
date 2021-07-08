@@ -24,6 +24,10 @@
   font-weight: bold;
 }
 
+.main-select label:hover {
+  color: #d2dbeb;
+}
+
 .main-select:nth-child(2) {
   /* margin-top: 20px 0; */
 }
@@ -33,6 +37,11 @@
   text-decoration: none;
   display: block;
   margin: 10px 0;
+}
+
+.item a:hover {
+  color: #041f4e;
+  transition: all 0.3s ease;
 }
 
 .arrow {

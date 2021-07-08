@@ -37,12 +37,8 @@ const ProductStore = (props) => {
                 fontSize="12px"
               />
             }
-            style={{
-              with: 'calc(100% - 40px)',
-              margin: '20px',
-            }}
           >
-            <div style={{ display: 'flex' }}>
+            <div className="productBlock">
               {product.productsByPrice[key].map((product) => (
                 <Link
                   to={`/${product.slug}/${product._id}/p`}

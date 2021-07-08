@@ -1,18 +1,3 @@
-.back-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 2;
-  animation: fadeIn 0.3s;
-}
-.back-overlay.active {
-  display: unset;
-}
-
 .menu-navigation {
   background-color: #2874f0;
 }
@@ -20,7 +5,7 @@
 .side-menu-container {
   position: relative;
   max-width: 360px;
-  display: flex;
+  display: none;
 }
 
 .sidemenu {
@@ -71,6 +56,10 @@
   cursor: pointer;
 }
 
+.menu-nav-tabs li:hover {
+  color: #d2dbeb;
+}
+
 .menu-nav-tabs .active {
   background-color: #235fbf;
 }
@@ -86,13 +75,6 @@
   transform: rotate(90deg);
   transition: all 0.5s ease;
 }
-
-/* .menu-nav-tabs .close_cont {
-  align-self: center;
-  padding: 11px 1px;
-  margin-right: -27px;
-  border-radius: 10px;
-} */
 
 .menu_option {
   position: relative;
@@ -193,4 +175,26 @@
 .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all 500ms ease;
+}
+
+@media (max-width: 696px) {
+  .back-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    animation: fadeIn 0.3s;
+  }
+
+  .back-overlay.active {
+    display: unset;
+  }
+
+  .side-menu-container {
+    display: flex;
+  }
 }

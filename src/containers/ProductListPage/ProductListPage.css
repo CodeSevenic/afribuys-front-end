@@ -4,6 +4,11 @@
   display: block;
 }
 
+.productBlock {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .productContainer .productImgContainer {
   width: 150px;
   height: 150px;

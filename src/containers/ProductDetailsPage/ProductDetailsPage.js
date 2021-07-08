@@ -31,7 +31,7 @@ const ProductDetailsPage = (props) => {
     <Layout>
       {/* <div>{product.productDetails.name}</div> */}
       <div className="productDescriptionContainer">
-        <div className="flexRow">
+        <div className="productView">
           <div className="verticalImageStack">
             {product.productDetails.productPictures.map((thumb, index) => (
               <div key={index} className="thumbnail">
@@ -50,13 +50,15 @@ const ProductDetailsPage = (props) => {
             </div>
 
             {/* action buttons */}
-            <div className="flexRow">
+            <div className="productDescImgBtn">
               <MaterialButton
                 title="ADD TO CART"
                 bgColor="#ff9f00"
                 textColor="#ffffff"
                 style={{
-                  marginRight: '5px',
+                  margin: '5px',
+                  minWidth: '132px',
+                  maxWidth: '50px',
                 }}
                 icon={<IoMdCart />}
                 onClick={() => {
@@ -71,7 +73,9 @@ const ProductDetailsPage = (props) => {
                 bgColor="#fb641b"
                 textColor="#ffffff"
                 style={{
-                  marginLeft: '5px',
+                  margin: '5px',
+                  minWidth: '132px',
+                  maxWidth: '50px',
                 }}
                 icon={<AiFillThunderbolt />}
               />
