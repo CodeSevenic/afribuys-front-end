@@ -413,7 +413,7 @@ const Header = (props) => {
         {renderLoginModal()}
         <div className="subHeader">
           {/* Logo */}
-          <div className="logo">
+          <Link to="/" className="logo">
             <a href="">
               <img src={flipkartLogo} className="logoimage" alt="" />
             </a>
@@ -422,7 +422,7 @@ const Header = (props) => {
               <span className="plusText">Plus</span>
               <img src={goldenStar} className="goldenStar" alt="" />
             </a>
-          </div>
+          </Link>
           {/* Logo End */}
 
           {/* Search component */}
