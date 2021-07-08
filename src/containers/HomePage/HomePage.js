@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../../components/Layout/Layout';
 
 const HomePage = (props) => {
-  return <Layout>Home Page</Layout>;
+  return <Layout></Layout>;
 };
 
 export default HomePage;
