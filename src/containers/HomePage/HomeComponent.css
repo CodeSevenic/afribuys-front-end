@@ -19,7 +19,7 @@
 .labelText,
 .menuCont > ul > li > .menuCont > .listItemCont > .labelText {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .headProductList .menuCont .listItemCont .labelText {
