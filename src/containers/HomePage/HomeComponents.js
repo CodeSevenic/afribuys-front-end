@@ -1,8 +1,18 @@
 import { useSelector } from 'react-redux';
 import './HomeComponent.css';
+import { IoIosArrowForward } from 'react-icons/io';
+import { useEffect } from 'react';
+import { getAllCategory } from './../../actions/categoryAction';
+import { useDispatch } from 'react-redux';
 
 export const HeadProductList = (props) => {
   const category = useSelector((state) => state.category);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCategory());
+  }, []);
 
   const renderCategories = (categories) => {
     let myCategories = [];
@@ -25,14 +35,16 @@ export const HeadProductList = (props) => {
               ) : (
                 <label htmlFor={category.name} className="listItemCont">
                   {!category.parentId && (
-                    <img
-                      className="prodImgContainer"
-                      src="https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100"
-                      alt=""
-                    />
+                    <div className="prodImgContainer">
+                      <img
+                        src="https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100"
+                        alt=""
+                      />
+                    </div>
                   )}
                   <label htmlFor={category.name} className="labelText">
                     {category.name}
+                    <IoIosArrowForward className="arrowIcon" />
                   </label>
                 </label>
               )}

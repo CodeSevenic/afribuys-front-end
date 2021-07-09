@@ -1,6 +1,6 @@
 .headProductList {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0 20px;
   position: relative;
 }
@@ -14,21 +14,20 @@
   display: block;
 }
 
+.arrowIcon {
+  margin: 0 0 0 10px;
+}
+
+.labelText,
+.menuCont > ul > li > .menuCont > .listItemCont > .labelText {
+  display: flex;
+  align-items: center;
+}
+
 .listItemCont {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.labelText {
-  margin: 10px 0 0 0;
-  text-align: center;
-}
-
-.menuCont ul .labelText {
-  display: block;
-  color: green;
-  padding: 0;
 }
 
 .menuCont ul {
@@ -36,12 +35,28 @@
   top: 0;
 }
 
+.headProductList > .menuCont > ul > li > .menuCont > .labelText,
+.headProductList
+  > .menuCont
+  > ul
+  > li
+  > .menuCont
+  > .listItemCont
+  > .labelText {
+  background-color: blueviolet;
+  width: 100px;
+  text-align: center;
+  margin: -14px 0 0 0;
+  font-weight: bold;
+  color: black;
+  font-size: 0.8em;
+}
+
 .headProductList > .menuCont > ul > li > .menuCont {
   position: absolute;
 }
 .menuCont ul li .menuCont ul {
-  top: 30px;
-  left: 20px;
+  margin: 5px 0px 0px 10px;
 }
 
 .menuCont ul li .menuCont ul li .menuCont a {
@@ -60,7 +75,7 @@
 .prodImgContainer img {
   display: block;
   margin: 0 auto;
-  width: calc(100% - 25px);
+  width: calc(100% - 14px);
   height: inherit;
   object-fit: contain;
 }

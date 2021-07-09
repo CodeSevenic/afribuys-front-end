@@ -6,7 +6,7 @@ const Layout = (props) => {
   return (
     <>
       <Header />
-      <MenuHeader />
+      {!props.disableSubHeader && <MenuHeader />}
       {props.children}
     </>
   );

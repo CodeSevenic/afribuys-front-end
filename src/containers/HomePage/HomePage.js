@@ -4,7 +4,7 @@ import { HeadProductList } from './HomeComponents';
 
 const HomePage = (props) => {
   return (
-    <Layout>
+    <Layout disableSubHeader>
       <div>
         <div>
           <HeadProductList />
