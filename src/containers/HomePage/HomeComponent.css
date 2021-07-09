@@ -2,6 +2,16 @@
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+  position: relative;
+}
+
+.menuCont ul,
+.menuCont input[type='checkbox'] {
+  display: none;
+}
+
+.menuCont input:checked ~ ul {
+  display: block;
 }
 
 .listItemCont {
@@ -13,6 +23,30 @@
 .labelText {
   margin: 10px 0 0 0;
   text-align: center;
+}
+
+.menuCont ul .labelText {
+  display: block;
+  color: green;
+  padding: 0;
+}
+
+.menuCont ul {
+  padding: 0;
+  top: 0;
+}
+
+.headProductList > .menuCont > ul > li > .menuCont {
+  position: absolute;
+}
+.menuCont ul li .menuCont ul {
+  top: 30px;
+  left: 20px;
+}
+
+.menuCont ul li .menuCont ul li .menuCont a {
+  color: red;
+  top: 30px;
 }
 
 .prodImgContainer {
