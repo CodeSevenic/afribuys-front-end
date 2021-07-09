@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-.headProductList .menuCont .listItemCont .labelText {
+/* .headProductList .menuCont .listItemCont .labelText { */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
