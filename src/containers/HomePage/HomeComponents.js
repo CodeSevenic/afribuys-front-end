@@ -21,9 +21,9 @@ export const HeadProductList = (props) => {
         <>
           {category && (
             <div className="menuCont" key={category.name}>
-              {category.children.length > 0 && (
+              {/* {category.children.length > 0 && (
                 <input type="checkbox" name="" id={category.name} />
-              )}
+              )} */}
 
               {category.parentId && !category.children.length > 0 ? (
                 <a
@@ -44,7 +44,9 @@ export const HeadProductList = (props) => {
                   )}
                   <label htmlFor={category.name} className="labelText">
                     {category.name}
-                    <IoIosArrowForward className="arrowIcon" />
+                    {!category.parentId && (
+                      <IoIosArrowForward className="arrowIcon" />
+                    )}
                   </label>
                 </label>
               )}

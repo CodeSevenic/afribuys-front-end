@@ -1,27 +1,33 @@
 .headProductList {
   display: flex;
   justify-content: space-around;
-  padding: 0 20px;
+  padding: 10px 20px;
   position: relative;
+  margin: 10px 0;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px 1px darkgrey;
 }
 
-.menuCont ul,
-.menuCont input[type='checkbox'] {
-  display: none;
-}
-
-.menuCont input:checked ~ ul {
-  display: block;
+.headProductList > .menuCont {
+  width: 130px;
 }
 
 .arrowIcon {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 0px;
 }
 
 .labelText,
 .menuCont > ul > li > .menuCont > .listItemCont > .labelText {
   display: flex;
   align-items: center;
+}
+
+.headProductList .menuCont .listItemCont .labelText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: small;
+  margin: 5px 0 0 0;
 }
 
 .listItemCont {
@@ -32,7 +38,7 @@
 
 .menuCont ul {
   padding: 0;
-  top: 0;
+  margin: 0;
 }
 
 .headProductList > .menuCont > ul > li > .menuCont > .labelText,
@@ -43,25 +49,40 @@
   > .menuCont
   > .listItemCont
   > .labelText {
-  background-color: blueviolet;
   width: 100px;
   text-align: center;
-  margin: -14px 0 0 0;
+  margin: 0px 0 0 10px;
   font-weight: bold;
-  color: black;
+  color: #235fc0;
   font-size: 0.8em;
+  border-bottom: 1px solid;
 }
 
 .headProductList > .menuCont > ul > li > .menuCont {
+  background-color: #fff;
+  padding: 10px;
   position: absolute;
+  margin: 0px 0 0 0;
+  display: none;
+  border-radius: 10px;
 }
+
+.headProductList > .menuCont:hover > ul > li > .menuCont {
+  display: block;
+}
+
 .menuCont ul li .menuCont ul {
-  margin: 5px 0px 0px 10px;
+  /* margin: 5px 0px 0px 10px; */
 }
 
 .menuCont ul li .menuCont ul li .menuCont a {
-  color: red;
-  top: 30px;
+  color: black;
+  font-size: 0.8em;
+  margin: 5px 0 0 10px;
+}
+
+.menuCont ul li .menuCont ul li .menuCont a:hover {
+  color: #2874f0;
 }
 
 .prodImgContainer {
