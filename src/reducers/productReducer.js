@@ -9,6 +9,7 @@ const initialState = {
   error: null,
   productDetails: {},
   loading: false,
+  all_products: [],
 };
 
 export const productReducer = (state = initialState, action) => {
@@ -22,6 +23,8 @@ export const productReducer = (state = initialState, action) => {
           ...action.payload.productsByPrice,
         },
       };
+    case productConstants.GET_ALL_PRODUCTS_SUCCESS:
+      return { ...state, all_products: action.payload.products };
 
     case productConstants.GET_PRODUCTS_PAGE_REQUEST:
       return { ...state, pageRequest: true };

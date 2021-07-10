@@ -6,16 +6,26 @@ import { getAllCategory } from './../../actions/categoryAction';
 import { useDispatch } from 'react-redux';
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.scss';
-import { MaterialButton } from '../../components/MaterialUI/MaterialUI';
+
+import { getProducts } from '../../actions/productAction';
 import { generatePublicUrl } from '../../urlConfig';
-import { addToCart } from '../../actions/cartAction';
-import { AiFillThunderbolt } from 'react-icons/ai';
-import Rating from '../../components/UI/Rating';
+import Rating from './../../components/UI/Rating';
 import Price from './../../components/UI/Price';
-import Card from './../../components/UI/Card/Card';
-import { getProductBySlug } from './../../actions/productAction';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from 'swiper';
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 export const HeadProductList = (props) => {
   const category = useSelector((state) => state.category);
@@ -113,24 +123,62 @@ export const HomeCarousel = (props) => {
   );
 };
 
-export const Swipe = (props) => {
-  const product = useSelector((state) => state.product);
-  const priceRange = product.priceRange;
+export const ProductSpace = (props) => {
+  const all_products = useSelector((state) => state.product.all_products);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
 
   return (
     <Swiper
       spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
+      slidesPerView={'auto'}
+      navigation
+      centeredSlides={true}
+      autoplay={{ delay: 4000, disableOnInteraction: true }}
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
       onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      ...
+      {all_products.map((product, index) => (
+        <SwiperSlide key={index}>
+          <div>
+            <Link
+              to={`/${product.slug}/${product._id}/p`}
+              className="productCont"
+              key={product._id}
+            >
+              <div className="productImgContainer">
+                <img
+                  src={generatePublicUrl(product.productPictures[0].img)}
+                  alt="Product"
+                />
+              </div>
+              <div className="productInfo">
+                <div style={{ margin: '10px 0' }}>{product.name}</div>
+                <div>
+                  <Rating value="4.3" />
+                  &nbsp;&nbsp;
+                  <span
+                    style={{
+                      color: '#777',
+                      fontWeight: '500',
+                      fontSize: '12px',
+                    }}
+                  >
+                    (3353)
+                  </span>
+                </div>
+                <Price value={product.price} />
+              </div>
+            </Link>
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

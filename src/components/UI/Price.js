@@ -1,5 +1,4 @@
-import React from "react";
-import { BiRupee } from "react-icons/bi";
+import React from 'react';
 
 /**
  * @author
@@ -10,13 +9,12 @@ const Price = (props) => {
   return (
     <div
       style={{
-        fontSize: props.fontSize ? props.fontSize : "14px",
-        fontWeight: "bold",
-        margin: "5px 0",
+        fontSize: props.fontSize ? props.fontSize : '14px',
+        fontWeight: 'bold',
+        margin: '5px 0',
       }}
     >
-      <BiRupee />
-      {props.value}
+      R{props.value}
     </div>
   );
 };

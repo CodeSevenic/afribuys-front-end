@@ -1,6 +1,11 @@
 import React from 'react';
 import Layout from '../../components/Layout/Layout';
-import { HeadProductList, HomeCarousel, Swipe } from './HomeComponents';
+import {
+  HeadProductList,
+  HomeCarousel,
+  Swipe,
+  ProductSpace,
+} from './HomeComponents';
 
 const HomePage = (props) => {
   return (
@@ -28,7 +33,7 @@ const HomePage = (props) => {
               },
             ]}
           />
-          <Swipe />
+          <ProductSpace />
         </div>
       </div>
     </Layout>
