@@ -10,3 +10,8 @@ body {
 .sb {
   justify-content: space-between;
 }
+
+.App {
+  /* display: flex;
+  flex-direction: column; */
+}
