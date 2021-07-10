@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import './HomeComponent.css';
-import { IoIosArrowForward } from 'react-icons/io';
+import { IoIosArrowForward, IoMdCart } from 'react-icons/io';
 import { useEffect } from 'react';
 import { getAllCategory } from './../../actions/categoryAction';
 import { useDispatch } from 'react-redux';
@@ -8,6 +8,14 @@ import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
+import { MaterialButton } from '../../components/MaterialUI/MaterialUI';
+import { generatePublicUrl } from '../../urlConfig';
+import { addToCart } from '../../actions/cartAction';
+import { AiFillThunderbolt } from 'react-icons/ai';
+import Rating from '../../components/UI/Rating';
+import Price from './../../components/UI/Price';
+import Card from './../../components/UI/Card/Card';
+import { getProductBySlug } from './../../actions/productAction';
 
 export const HeadProductList = (props) => {
   const category = useSelector((state) => state.category);
@@ -106,6 +114,11 @@ export const HomeCarousel = (props) => {
 };
 
 export const Swipe = (props) => {
+  const product = useSelector((state) => state.product);
+  const priceRange = product.priceRange;
+
+  const dispatch = useDispatch();
+
   return (
     <Swiper
       spaceBetween={50}
