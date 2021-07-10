@@ -27,7 +27,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: small;
-  /* margin: 5px 0 0 0; */
+  margin: 5px 0 0 0;
 }
 
 .listItemCont {
@@ -69,6 +69,7 @@
 
 .headProductList > .menuCont:hover > ul > li > .menuCont {
   display: block;
+  z-index: 99;
 }
 
 .menuCont ul li .menuCont ul {
