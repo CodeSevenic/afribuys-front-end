@@ -7,7 +7,9 @@ import './Layout.css';
 const Layout = (props) => {
   return (
     <>
-      <Header />
+      <header>
+        <Header />
+      </header>
       {!props.disableSubHeader && <MenuHeader />}
       <main className="mainView">{props.children}</main>
       <Footer />
