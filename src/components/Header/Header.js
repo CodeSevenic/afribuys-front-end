@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import './SideMenu.css';
-import flipkartLogo from '../../images/logo/flipkart.png';
-import goldenStar from '../../images/logo/golden-star.png';
+import logo from '../../images/logo/logo.png';
 import { IoIosArrowDown, IoIosSearch } from 'react-icons/io';
 import {
   Modal,
@@ -415,12 +414,7 @@ const Header = (props) => {
           {/* Logo */}
           <Link to="/" className="logo">
             <a href="">
-              <img src={flipkartLogo} className="logoimage" alt="" />
-            </a>
-            <a style={{ marginTop: '-10px' }}>
-              <span className="exploreText">Explore</span>
-              <span className="plusText">Plus</span>
-              <img src={goldenStar} className="goldenStar" alt="" />
+              <img src={logo} className="logoimage" alt="" />
             </a>
           </Link>
           {/* Logo End */}

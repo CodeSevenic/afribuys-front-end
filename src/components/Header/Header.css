@@ -34,7 +34,8 @@
   margin-right: 10px;
 }
 .logo .logoimage {
-  width: 75px;
+  width: 100px;
+  filter: brightness(15.5);
 }
 .exploreText {
   font-size: 10px;
@@ -46,10 +47,6 @@
   text-transform: capitalize;
   font-style: italic;
   color: yellow;
-}
-.logo .goldenStar {
-  width: 10px;
-  height: 10px;
 }
 
 .searchInputContainer {
