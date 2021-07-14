@@ -38,7 +38,7 @@ function App() {
             path="/:productSlug/:productId/p"
             component={ProductDetailsPage}
           />
-          <Route path="/:slug" component={ProductListPage} />
+          {/* <Route path="/:slug" component={ProductListPage} /> */}
         </Switch>
       </Router>
     </div>
