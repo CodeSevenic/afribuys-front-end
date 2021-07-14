@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/" exact component={HomePage} />
+          {/* <Route path="/" exact component={HomePage} /> */}
           <Route path="/cart" component={CartPage} />
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/account/orders" component={OrderPage} />
