@@ -33,7 +33,7 @@ function App() {
           <Route path="/cart" component={CartPage} />
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/account/orders" component={OrderPage} />
-          <Route path="/order_details/:orderId" component={OrderDetailsPage} />
+          {/* <Route path="/order_details/:orderId" component={OrderDetailsPage} /> */}
           <Route
             path="/:productSlug/:productId/p"
             component={ProductDetailsPage}
